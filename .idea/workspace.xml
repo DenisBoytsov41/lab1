@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="24bb90b9-5709-4c3d-9535-d1c200793a5f" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+    </include_path>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2cUJP1z68UaANYEP7MSsgzicRy7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.main.html.executor": "Run",
+    "PHP Script.index.php.executor": "Run",
+    "PHP Script.personal_cabinet.php.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Home/Desktop/php-8.3.2-nts-Win32-vs16-x64/php.exe",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "ts.external.directory.path": "D:\\PhpStorm 2023.3.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\localhost\blocks" />
+      <recent name="D:\OSPanel\domains\localhost\php" />
+      <recent name="D:\OSPanel\domains\localhost\js" />
+      <recent name="D:\OSPanel\domains\localhost\css" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14015.96" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="24bb90b9-5709-4c3d-9535-d1c200793a5f" name="Changes" comment="" />
+      <created>1708160195990</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708160195990</updated>
+      <workItem from="1708160197103" duration="609000" />
+      <workItem from="1708160905399" duration="4405000" />
+      <workItem from="1708171285477" duration="5451000" />
+      <workItem from="1708248308425" duration="9010000" />
+      <workItem from="1708352099520" duration="440000" />
+      <workItem from="1708417076246" duration="921000" />
+      <workItem from="1708418022714" duration="634000" />
+      <workItem from="1708418667730" duration="531000" />
+      <workItem from="1708419207980" duration="1195000" />
+      <workItem from="1708421821977" duration="186000" />
+      <workItem from="1708422018162" duration="1048000" />
+      <workItem from="1708423138825" duration="1224000" />
+      <workItem from="1708424388069" duration="6314000" />
+      <workItem from="1708516154339" duration="159000" />
+      <workItem from="1708516323913" duration="2861000" />
+      <workItem from="1708595892930" duration="848000" />
+      <workItem from="1708600156823" duration="1030000" />
+      <workItem from="1708681179418" duration="15696000" />
+      <workItem from="1708757947519" duration="6201000" />
+      <workItem from="1708764175859" duration="120000" />
+      <workItem from="1708764669680" duration="1020000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
