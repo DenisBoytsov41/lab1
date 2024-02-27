@@ -17,11 +17,25 @@
     </div>
     <div class="form-group">
         <label for="password">Пароль:</label>
-        <input type="password" autocomplete="off" class="form-control" id="password" name="password" required minlength="8">
+        <div class="input-group">
+            <input type="password" autocomplete="off" class="form-control" id="password" name="password" required minlength="8">
+            <div class="input-group-append">
+            <span class="input-group-text" id="togglePassword">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="confirmPassword">Подтверждение пароля:</label>
-        <input type="password" autocomplete="off" class="form-control" id="confirmPassword" name="confirmPassword" required>
+        <div class="input-group">
+            <input type="password" autocomplete="off" class="form-control" id="confirmPassword" name="confirmPassword" required>
+            <div class="input-group-append">
+            <span class="input-group-text" id="toggleConfirmPassword">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            </div>
+        </div>
     </div>
     <div class="form-group form-check">
         <input type="checkbox" autocomplete="off" class="form-check-input" id="agreeTerms" name="agreeTerms" required>
@@ -49,4 +63,20 @@
         <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
     </div>
 </form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#togglePassword").click(function(){
+            const passwordField = $("#password");
+            const fieldType = passwordField.attr('type');
+            passwordField.attr('type', fieldType === 'password' ? 'text' : 'password');
+        });
+
+        $("#toggleConfirmPassword").click(function(){
+            const confirmPasswordField = $("#confirmPassword");
+            const fieldType = confirmPasswordField.attr('type');
+            confirmPasswordField.attr('type', fieldType === 'password' ? 'text' : 'password');
+        });
+    });
+</script>
 

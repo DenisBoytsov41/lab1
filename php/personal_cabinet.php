@@ -118,8 +118,9 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     </div>
 </div>
 <script src="/js/theme.js"></script>
+
 <script>
-    const jwtToken = "<?php echo isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '' ? $_SESSION['jwt'] : ''; ?>";
+    const jwtToken = "<?php echo ($guestMode || (isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '')) ? $_SESSION['jwt'] : ''; ?>";
     if (jwtToken) {
         fetch('protected_resource.php', {
             method: 'GET',
@@ -153,17 +154,40 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
 
 </script>
 <script>
-    window.onload = function() {
-        window.onpageshow = function(event) {
-            if (event.persisted) {
-                const logoutForm = document.querySelector('.logout-form');
-                if (logoutForm) {
-                    logoutForm.submit();
-                }
-            }
-        };
-    };
+    window.addEventListener('beforeunload', function(event) {
+        if (event.persisted) {
+            console.log('Перезагрузка страницы из кэша');
+            fetch('/php/logout.php', {
+                method: 'POST'
+            })
+                .then(response => {
+                    console.log('Успешно отправлен запрос на logout.php');
+                })
+                .catch(error => {
+                    console.error('Ошибка при отправке запроса на logout.php:', error);
+                });
+        }
+    });
 </script>
+<script>
+    const jwtToken2 = "<?php echo isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '' ? $_SESSION['jwt'] : ''; ?>";
+    const guestMode = <?php echo $guestMode ? 'true' : 'false'; ?>;
+    let scriptExecuted = sessionStorage.getItem('scriptExecuted');
+    console.log(jwtToken2);
+
+    if (!scriptExecuted && !jwtToken2 && guestMode && window.location.pathname.includes('/php/personal_cabinet.php')) {
+        window.location.href = '/php/personal_cabinet.php';
+        sessionStorage.setItem('scriptExecuted', true);
+        console.log('fsf');
+    }
+
+    window.addEventListener('beforeunload', function() {
+        sessionStorage.removeItem('scriptExecuted');
+    });
+</script>
+
+
+
 
 </body>
 </html>
