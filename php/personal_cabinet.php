@@ -121,6 +121,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
 
 <script>
     const jwtToken = "<?php echo ($guestMode || (isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '')) ? $_SESSION['jwt'] : ''; ?>";
+    console.log(<?php echo$guestMode ?>);
     if (jwtToken) {
         fetch('protected_resource.php', {
             method: 'GET',
@@ -135,8 +136,9 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                console.log('fafsfsf');
                 const dataContainer = document.getElementById('dataContainer');
+                console.log(dataContainer);
                 if (dataContainer) {
                     dataContainer.textContent = JSON.stringify(data);
                 }
@@ -153,22 +155,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     }
 
 </script>
-<script>
-    window.addEventListener('beforeunload', function(event) {
-        if (event.persisted) {
-            console.log('Перезагрузка страницы из кэша');
-            fetch('/php/logout.php', {
-                method: 'POST'
-            })
-                .then(response => {
-                    console.log('Успешно отправлен запрос на logout.php');
-                })
-                .catch(error => {
-                    console.error('Ошибка при отправке запроса на logout.php:', error);
-                });
-        }
-    });
-</script>
+
 <script>
     const jwtToken2 = "<?php echo isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '' ? $_SESSION['jwt'] : ''; ?>";
     const guestMode = <?php echo $guestMode ? 'true' : 'false'; ?>;
@@ -185,9 +172,6 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
         sessionStorage.removeItem('scriptExecuted');
     });
 </script>
-
-
-
 
 </body>
 </html>
