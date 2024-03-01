@@ -118,10 +118,66 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     </div>
 </div>
 <script src="/js/theme.js"></script>
-
 <script>
-    const jwtToken = "<?php echo ($guestMode || (isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '')) ? $_SESSION['jwt'] : ''; ?>";
-    console.log(<?php echo$guestMode ?>);
+    document.addEventListener('DOMContentLoaded', function() {
+        let logoutRequested = false;
+        let pageRefreshed = false;
+
+        window.addEventListener('popstate', function(event) {
+            console.log('Нажата кнопка "Назад"');
+            if (!logoutRequested && !pageRefreshed) {
+                history.back();
+            }
+        });
+
+        history.pushState(null, null, window.location.href);
+
+        function onPageRefresh() {
+            console.log('Страница обновлена');
+            pageRefreshed = true;
+        }
+        function onFocus() {
+            console.log('Окно активировано');
+            if (!logoutRequested && !pageRefreshed) {
+                fetch('/php/logout.php', {
+                    method: 'POST'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Успешно отправлен запрос на logout.php');
+                            logoutRequested = true;
+                        } else {
+                            console.error('Ошибка при отправке запроса на logout.php:', response.status);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Ошибка при отправке запроса на logout.php:', error);
+                    });
+            }
+        }
+
+        function onBlur() {
+            console.log('Окно деактивировано');
+        }
+
+        onFocus();
+
+        window.addEventListener('focus', onFocus);
+        window.addEventListener('blur', onBlur);
+        window.addEventListener('beforeunload', onPageRefresh);
+
+    });
+
+
+
+
+
+
+
+
+
+    const jwtToken = "<?php echo (!$guestMode && (isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '')) ? $_SESSION['jwt'] : ''; ?>";
+    console.log(jwtToken);
     if (jwtToken) {
         fetch('protected_resource.php', {
             method: 'GET',
@@ -171,6 +227,9 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     window.addEventListener('beforeunload', function() {
         sessionStorage.removeItem('scriptExecuted');
     });
+
+
+
 </script>
 
 </body>

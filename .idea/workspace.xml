@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="24bb90b9-5709-4c3d-9535-d1c200793a5f" name="Changes" comment="new">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/authorization.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/authorization.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/personal_cabinet.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/personal_cabinet.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +124,9 @@
       <workItem from="1709037665273" duration="3250000" />
       <workItem from="1709117786701" duration="2280000" />
       <workItem from="1709123332693" duration="423000" />
+      <workItem from="1709208071528" duration="2422000" />
+      <workItem from="1709282914519" duration="4946000" />
+      <workItem from="1709291211463" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -148,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709039099749</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="new">
+      <option name="closed" value="true" />
+      <created>1709208114383</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709208114383</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
