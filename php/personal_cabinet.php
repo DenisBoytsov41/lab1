@@ -122,12 +122,11 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     document.addEventListener('DOMContentLoaded', function() {
         let logoutRequested = false;
         let pageRefreshed = false;
+        let devToolsOpened = false;
 
         window.addEventListener('popstate', function(event) {
             console.log('Нажата кнопка "Назад"');
-            if (!logoutRequested && !pageRefreshed) {
-                history.back();
-            }
+            sendLogoutRequestIfNotRequested();
         });
 
         history.pushState(null, null, window.location.href);
@@ -136,23 +135,11 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
             console.log('Страница обновлена');
             pageRefreshed = true;
         }
+
         function onFocus() {
             console.log('Окно активировано');
-            if (!logoutRequested && !pageRefreshed) {
-                fetch('/php/logout.php', {
-                    method: 'POST'
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log('Успешно отправлен запрос на logout.php');
-                            logoutRequested = true;
-                        } else {
-                            console.error('Ошибка при отправке запроса на logout.php:', response.status);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Ошибка при отправке запроса на logout.php:', error);
-                    });
+            if (!devToolsOpened) {
+                sendLogoutRequestIfNotRequested();
             }
         }
 
@@ -160,19 +147,38 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
             console.log('Окно деактивировано');
         }
 
-        onFocus();
+        function sendLogoutRequestIfNotRequested() {
+            if (!logoutRequested && !pageRefreshed) {
+                sendLogoutRequest();
+            }
+        }
+
+        function sendLogoutRequest() {
+            fetch('/php/logout.php', {
+                method: 'POST'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Успешно отправлен запрос на logout.php');
+                        logoutRequested = true;
+                    } else {
+                        console.error('Ошибка при отправке запроса на logout.php:', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка при отправке запроса на logout.php:', error);
+                });
+        }
 
         window.addEventListener('focus', onFocus);
         window.addEventListener('blur', onBlur);
         window.addEventListener('beforeunload', onPageRefresh);
 
+        // Проверяем, были ли открыты инструменты разработчика
+        window.addEventListener('devtoolschange', function(event) {
+            devToolsOpened = event.detail.open;
+        });
     });
-
-
-
-
-
-
 
 
 
