@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24bb90b9-5709-4c3d-9535-d1c200793a5f" name="Changes" comment="new">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/authorization.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/authorization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/personal_cabinet.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/personal_cabinet.php" afterDir="false" />
-    </list>
+    <list default="true" id="24bb90b9-5709-4c3d-9535-d1c200793a5f" name="Changes" comment="new" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +122,7 @@
       <workItem from="1709123332693" duration="423000" />
       <workItem from="1709208071528" duration="2422000" />
       <workItem from="1709282914519" duration="4946000" />
-      <workItem from="1709291211463" duration="313000" />
+      <workItem from="1709291211463" duration="366000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -160,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709208114383</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new">
+      <option name="closed" value="true" />
+      <created>1709291565085</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709291565085</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
