@@ -92,6 +92,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
 </head>
 <body class="<?= getCurrentTheme(); ?>">
 <div>
+    <link rel="stylesheet" type="text/css" href="/css/secondstyle.css">
     <h1>Личный кабинет</h1>
     <p>Добро пожаловать,
         <?php if (!$guestMode && isset($_SESSION['username'])): ?>
@@ -108,6 +109,31 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
             </button>
         </form>
     <?php endif; ?>
+    <form method="post" action="mysqli_fetch_array.php">
+        <button class="btn" type="submit">Вывод данных из базы на страницу</button>
+    </form>
+    <form method="post" action="total_records.php">
+        <button class="btn" type="submit">Общее количество записей в таблице</button>
+    </form>
+    <form method="post" action="count_records_last_month.php">
+        <button class="btn" type="submit">Подсчет количества записей за последний месяц</button>
+    </form>
+    <form method="post" action="last_added_record.php">
+        <button class="btn" type="submit">Какая запись была сделана последней</button>
+    </form>
+    <form method="post" action="display_results.php">
+        <button class="btn" type="submit">Размещение данных на странице</button>
+    </form>
+    <form method="get" action="search_results.php">
+        <label for="usersearch">Поиск по ключевому слову:</label>
+        <input type="text" id="usersearch" name="usersearch" placeholder="Введите ключевое слово">
+        <button class="btn" type="submit">Искать</button>
+    </form>
+    <form method="get" action="search_results_2.php">
+        <label for="usersearch">Реализация поиска по фразе:</label>
+        <input type="text" id="usersearch" name="usersearch" placeholder="Введите фразу поиска">
+        <button class="btn" type="submit">Искать</button>
+    </form>
     <form method="post" class="logout-form">
         <button type="submit" class="logout" name="logout">Выйти</button>
     </form>
