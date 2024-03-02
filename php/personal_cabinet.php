@@ -103,7 +103,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     <?php if (!$guestMode && isset($_SESSION['Login'])): ?>
         <form method="post">
             <label>Выберите тему:</label>
-            <button type="submit" name="theme" value="<?= getCurrentTheme() === 'light' ? 'dark' : 'light'; ?>">
+            <button id="theme-switch-btn" type="submit" name="theme" value="<?= getCurrentTheme() === 'light' ? 'dark' : 'light'; ?>">
                 <?= getCurrentTheme() === 'light' ? 'Темная тема' : 'Светлая тема'; ?>
             </button>
         </form>
@@ -122,11 +122,24 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     document.addEventListener('DOMContentLoaded', function() {
         let logoutRequested = false;
         let pageRefreshed = false;
-        let devToolsOpened = false;
+        let themeChanged = false; // Флаг для отслеживания смены темы
+
+        /*window.onbeforeunload = function(event) {
+            if (!logoutRequested && !pageRefreshed && !themeChanged) {
+                return "Вы уверены, что хотите покинуть эту страницу?";
+            }
+        };*/
+
+        // Добавляем обработчик клика по кнопке смены темы
+        document.getElementById('theme-switch-btn').addEventListener('click', function() {
+            themeChanged = true;
+        });
 
         window.addEventListener('popstate', function(event) {
             console.log('Нажата кнопка "Назад"');
-            sendLogoutRequestIfNotRequested();
+            if (!logoutRequested && !pageRefreshed && !themeChanged) {
+                sendLogoutRequestIfNotRequested();
+            }
         });
 
         history.pushState(null, null, window.location.href);
@@ -138,7 +151,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
 
         function onFocus() {
             console.log('Окно активировано');
-            if (!devToolsOpened) {
+            if (!logoutRequested && !pageRefreshed && !themeChanged) {
                 sendLogoutRequestIfNotRequested();
             }
         }
@@ -148,7 +161,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
         }
 
         function sendLogoutRequestIfNotRequested() {
-            if (!logoutRequested && !pageRefreshed) {
+            if (!logoutRequested && !pageRefreshed && !themeChanged) {
                 sendLogoutRequest();
             }
         }
@@ -161,6 +174,7 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
                     if (response.ok) {
                         console.log('Успешно отправлен запрос на logout.php');
                         logoutRequested = true;
+                        history.back();
                     } else {
                         console.error('Ошибка при отправке запроса на logout.php:', response.status);
                     }
@@ -173,15 +187,14 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
         window.addEventListener('focus', onFocus);
         window.addEventListener('blur', onBlur);
         window.addEventListener('beforeunload', onPageRefresh);
-
-        // Проверяем, были ли открыты инструменты разработчика
-        window.addEventListener('devtoolschange', function(event) {
-            devToolsOpened = event.detail.open;
-        });
     });
 
 
 
+
+
+</script>
+<script>
     const jwtToken = "<?php echo (!$guestMode && (isset($_GET['token']) && isset($_SESSION['jwt']) && $_SESSION['jwt'] !== '')) ? $_SESSION['jwt'] : ''; ?>";
     console.log(jwtToken);
     if (jwtToken) {
@@ -198,7 +211,6 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
                 return response.json();
             })
             .then(data => {
-                console.log('fafsfsf');
                 const dataContainer = document.getElementById('dataContainer');
                 console.log(dataContainer);
                 if (dataContainer) {
