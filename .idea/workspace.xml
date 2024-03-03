@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24bb90b9-5709-4c3d-9535-d1c200793a5f" name="Changes" comment="new">
-      <change afterPath="$PROJECT_DIR$/css/secondstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/count_records_last_month.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/display_results.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/last_added_record.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/mysqli_fetch_array.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/search_results.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/search_results_2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/total_records.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/recaptchalib.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/authorization.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/authorization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/personal_cabinet.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/personal_cabinet.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +69,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/OSPanel/domains/lab1/css",
+    "last_opened_file_path": "D:/OSPanel/domains/lab1/php",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -87,8 +83,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\lab1\css" />
       <recent name="D:\OSPanel\domains\lab1\php" />
+      <recent name="D:\OSPanel\domains\lab1\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OSPanel\domains\localhost\blocks" />
@@ -140,7 +136,8 @@
       <workItem from="1709208071528" duration="2422000" />
       <workItem from="1709282914519" duration="4946000" />
       <workItem from="1709291211463" duration="366000" />
-      <workItem from="1709369004272" duration="11382000" />
+      <workItem from="1709369004272" duration="12491000" />
+      <workItem from="1709471449215" duration="11930000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -206,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709381205749</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="new">
+      <option name="closed" value="true" />
+      <created>1709383289019</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709383289019</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

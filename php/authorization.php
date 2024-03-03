@@ -14,11 +14,13 @@
             </div>
         </div>
     </div>
+    <div class="g-recaptcha" data-sitekey="6LeUYYgpAAAAAHjo3qZ8wEhMcl4YkW-N6lQIvJGX"></div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Войти</button>
     </div>
 </form>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function(){
         $("#togglePassword").click(function(){

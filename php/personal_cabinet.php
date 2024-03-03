@@ -47,7 +47,7 @@ if (isset($_POST['theme'])) {
 
 function getCurrentTheme() {
     global $guestMode;
-    if (isset($_SESSION['Login']) && !$guestMode) {
+    if (isset($_SESSION['Login']) && !$guestMode && isset($_COOKIE['user'])) {
         $login = $_SESSION['Login'];
         $sql = "SELECT theme FROM user_themes WHERE username='$login'";
         $result = executeQuery($sql);
@@ -61,7 +61,7 @@ function getCurrentTheme() {
 
 $guestMode = true;
 
-if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
+if (isset($_GET['token']) && isset($_SESSION['jwt']) && isset($_COOKIE['user'])) {
     $token = $_GET['token'];
     $sessionToken = $_SESSION['jwt'];
     if ($token === $sessionToken) {
@@ -95,13 +95,13 @@ if (isset($_GET['token']) && isset($_SESSION['jwt'])) {
     <link rel="stylesheet" type="text/css" href="/css/secondstyle.css">
     <h1>Личный кабинет</h1>
     <p>Добро пожаловать,
-        <?php if (!$guestMode && isset($_SESSION['username'])): ?>
+        <?php if (!$guestMode && isset($_SESSION['username']) && isset($_COOKIE['user'])): ?>
             <?= $_SESSION['username']; ?>
         <?php else: ?>
             Гость
         <?php endif; ?>
         !</p>
-    <?php if (!$guestMode && isset($_SESSION['Login'])): ?>
+    <?php if (!$guestMode && isset($_SESSION['Login']) && isset($_COOKIE['user'])): ?>
         <form method="post">
             <label>Выберите тему:</label>
             <button id="theme-switch-btn" type="submit" name="theme" value="<?= getCurrentTheme() === 'light' ? 'dark' : 'light'; ?>">

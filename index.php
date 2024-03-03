@@ -6,6 +6,7 @@
     <title>Cтраница сайта</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -79,20 +80,33 @@
                 data: formData,
                 success: function(data) {
                     console.log(data);
-                    var responseData = JSON.parse(data);
-                    console.log(responseData);
-                    if (responseData.errors) {
-                        $('#loginErrors').html('<div class="alert alert-danger">' + responseData.errors + '</div>');
-                    } else {
-                        $('#loginErrors').html('<div class="alert alert-success">' + responseData.success + '</div>');
 
-                        window.location.href = 'php/personal_cabinet.php?token=' + responseData.token;
+                    // Проверяем, являются ли данные строкой JSON
+                    if (typeof data === 'string' && data.trim().startsWith('{') && data.trim().endsWith('}')) {
+                        var responseData = JSON.parse(data);
+                        console.log(responseData);
+
+                        // Проверяем, является ли data объектом ошибок
+                        if (responseData.errors) {
+                            $('#loginErrors').html('<div class="alert alert-danger">' + responseData.errors + '</div>');
+                        } else if (responseData.success && responseData.token) {
+                            $('#loginErrors').html('<div class="alert alert-success">' + responseData.success + '</div>');
+                            window.location.href = 'php/personal_cabinet.php?token=' + responseData.token;
+                        } else {
+                            // Если данные не являются ожидаемым JSON, выводим их напрямую
+                            $('#loginErrors').html('<div class="alert alert-danger">Некорректный формат данных</div>');
+                        }
+                    } else {
+                        // Если данные не являются JSON, выводим их напрямую
+                        $('#loginErrors').html('<div class="alert alert-danger">' + data + '</div>');
                     }
                 }
             });
         });
     });
 </script>
+
+
 
 </body>
 </html>
