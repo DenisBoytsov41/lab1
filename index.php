@@ -6,7 +6,9 @@
     <title>Cтраница сайта</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/cockie.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.osano.com/cookieconsent/OsanoCookieConsent.js"></script>
 </head>
 <body>
 
@@ -19,7 +21,7 @@
         <h3>Форма авторизации</h3>
         <div id="loginErrors"></div>
         <?php
-            require "php/authorization.php";
+        require "php/authorization.php";
         ?>
     </div>
 
@@ -27,9 +29,14 @@
         <h3>Форма регистрации</h3>
         <div id="registrationErrors"></div>
         <?php
-            require "php/registration.php"
+        require "php/registration.php"
         ?>
     </div>
+</div>
+
+<div style="display: none" id="cookieBanner" class="cookie-banner">
+    <p>Мы используем куки (cookies), чтобы обеспечить лучшее пользовательское взаимодействие на нашем сайте. Продолжая использовать сайт, вы соглашаетесь с нашей политикой использования куки.</p>
+    <button id="acceptCookiesBtn" class="accept-cookies-btn">Принять</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -39,7 +46,24 @@
 <script src="js/ThemeType.js"></script>
 <script src="js/login.js"></script>
 <script src="js/register.js"></script>
+
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cookieBanner = document.getElementById('cookieBanner');
+        var acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
+        var cookiesAccepted = localStorage.getItem('cookiesAccepted');
+        console.log(cookiesAccepted);
+        if (cookiesAccepted === false || cookiesAccepted===null) {
+            cookieBanner.style.display = 'block';
+            console.log('csds');
+        }
+
+        acceptCookiesBtn.addEventListener('click', function() {
+            cookieBanner.style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+    });
+
     $(document).ready(function() {
         $('#registrationForm').submit(function(event) {
             event.preventDefault();
@@ -67,8 +91,6 @@
         });
     });
 
-</script>
-<script>
     $(document).ready(function() {
         $('#logForm').submit(function(event) {
             event.preventDefault();
@@ -106,8 +128,5 @@
     });
 </script>
 
-
-
 </body>
 </html>
-

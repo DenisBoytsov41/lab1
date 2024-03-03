@@ -29,17 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ));
     $response = curl_exec($ch);
     curl_close($ch);
-    // Проверяем успешность выполнения запроса
     if (!$response) {
         echo json_encode(array('errors' => 'Ошибка при проверке CAPTCHA.'));
         exit();
     }
 
-    // Декодируем JSON ответ
     $result2 = json_decode($response);
 
     if ($result2 && $result2->success) {
-        // Все в порядке, продолжаем аутентификацию и выдачу токена
         $conn = new mysqli($servername, $username, $password, $dbname);
 
         if ($conn->connect_error) {
