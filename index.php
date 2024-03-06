@@ -48,6 +48,7 @@
 <script src="js/register.js"></script>
 
 <script>
+    //localStorage.clear();
     document.addEventListener('DOMContentLoaded', function() {
         var cookieBanner = document.getElementById('cookieBanner');
         var acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
@@ -103,23 +104,21 @@
                 success: function(data) {
                     console.log(data);
 
-                    // Проверяем, являются ли данные строкой JSON
                     if (typeof data === 'string' && data.trim().startsWith('{') && data.trim().endsWith('}')) {
                         var responseData = JSON.parse(data);
                         console.log(responseData);
 
-                        // Проверяем, является ли data объектом ошибок
                         if (responseData.errors) {
                             $('#loginErrors').html('<div class="alert alert-danger">' + responseData.errors + '</div>');
                         } else if (responseData.success && responseData.token) {
                             $('#loginErrors').html('<div class="alert alert-success">' + responseData.success + '</div>');
                             window.location.href = 'php/personal_cabinet.php?token=' + responseData.token;
                         } else {
-                            // Если данные не являются ожидаемым JSON, выводим их напрямую
+
                             $('#loginErrors').html('<div class="alert alert-danger">Некорректный формат данных</div>');
                         }
                     } else {
-                        // Если данные не являются JSON, выводим их напрямую
+
                         $('#loginErrors').html('<div class="alert alert-danger">' + data + '</div>');
                     }
                 }

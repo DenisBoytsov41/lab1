@@ -99,6 +99,7 @@ if (!empty($errors)) {
 $conn->close();
 
 function validateInput($data) {
+
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);

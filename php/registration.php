@@ -20,7 +20,7 @@
         <div class="input-group">
             <input type="password" autocomplete="off" class="form-control" id="password" name="password" required minlength="8">
             <div class="input-group-append">
-            <span class="input-group-text" id="togglePassword">
+            <span class="input-group-text" id="togglePassword2">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </span>
             </div>
@@ -31,7 +31,7 @@
         <div class="input-group">
             <input type="password" autocomplete="off" class="form-control" id="confirmPassword" name="confirmPassword" required>
             <div class="input-group-append">
-            <span class="input-group-text" id="toggleConfirmPassword">
+            <span class="input-group-text" id="toggleConfirmPassword2">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </span>
             </div>
@@ -66,13 +66,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function(){
-        $("#togglePassword").click(function(){
+        $("#togglePassword2").click(function(){
             const passwordField = $("#password");
             const fieldType = passwordField.attr('type');
             passwordField.attr('type', fieldType === 'password' ? 'text' : 'password');
         });
 
-        $("#toggleConfirmPassword").click(function(){
+        $("#toggleConfirmPassword2").click(function(){
             const confirmPasswordField = $("#confirmPassword");
             const fieldType = confirmPasswordField.attr('type');
             confirmPasswordField.attr('type', fieldType === 'password' ? 'text' : 'password');

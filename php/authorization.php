@@ -8,7 +8,7 @@
         <div class="input-group">
             <input type="password" autocomplete="off" class="form-control" id="loginPassword" name="loginPassword" required minlength="8">
             <div class="input-group-append">
-            <span class="input-group-text" id="togglePassword">
+            <span class="input-group-text" id="togglePassword1">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </span>
             </div>
@@ -23,16 +23,10 @@
 
 <script>
     $(document).ready(function(){
-        $("#togglePassword").click(function(){
+        $("#togglePassword1").click(function(){
             const passwordField = $("#loginPassword");
             const fieldType = passwordField.attr('type');
             passwordField.attr('type', fieldType === 'password' ? 'text' : 'password');
-        });
-
-        $("#toggleConfirmPassword").click(function(){
-            const confirmPasswordField = $("#confirmPassword");
-            const fieldType = confirmPasswordField.attr('type');
-            confirmPasswordField.attr('type', fieldType === 'password' ? 'text' : 'password');
         });
     });
 </script>
